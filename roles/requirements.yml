@@ -1,0 +1,4 @@
+---
+roles:
+  # install docker from Galaxy
+  - name: geerlingguy.docker

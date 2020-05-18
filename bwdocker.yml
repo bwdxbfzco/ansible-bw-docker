@@ -1,0 +1,7 @@
+---
+# tasks file for docker server installation
+ - name: Configure docker 
+   become: true
+   hosts: all
+   roles: 
+    - geerlingguy.docker
