@@ -2,6 +2,6 @@
 # tasks file for docker server installation
  - name: Configure docker 
    become: true
-   hosts: all
+   hosts: '{{ ip_address | default("all") }}'
    roles: 
     - geerlingguy.docker
