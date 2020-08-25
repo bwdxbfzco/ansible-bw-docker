@@ -5,7 +5,7 @@
    hosts: '{{ ip_address | default("all") }}'
    
    pre_tasks:
-    - name: save host
+    - name: update resolve.conf
       template:
         src: files/resolv.conf.j2
         dest: /etc/resolv.conf
@@ -13,6 +13,11 @@
         group: root
         mode: 0644
         backup: yes
+        
+    - apt:
+        update_cache: yes
+      become: true
+      when: ansible_os_family == "Debian"        
       
    roles: 
     - geerlingguy.docker
