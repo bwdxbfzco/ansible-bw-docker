@@ -4,7 +4,7 @@
    become: true
    hosts: '{{ ip_address | default("all") }}'
    
-   tasks:
+   pre_tasks:
     - name: save host
       template:
         src: files/resolv.conf.j2
