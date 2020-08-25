@@ -3,5 +3,16 @@
  - name: Configure docker 
    become: true
    hosts: '{{ ip_address | default("all") }}'
+   
+   tasks:
+    - name: save host
+      template:
+        src: files/resolv.conf.j2
+        dest: /etc/resolv.conf
+        owner: root
+        group: root
+        mode: 0644
+        backup: yes
+      
    roles: 
     - geerlingguy.docker
