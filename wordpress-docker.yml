@@ -12,10 +12,10 @@
     
     # create user
     - name: Add new user
-    user:
-      name: "{{ system_user }}"
-      uid: 1040
-      shell: /bin/bash
+      user:
+        name: "{{ system_user }}"
+        uid: 1040
+        shell: /bin/bash
     
     # setup compose dir structure
     - name: setup compose dir structure
