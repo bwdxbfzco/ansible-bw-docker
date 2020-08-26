@@ -79,7 +79,7 @@
         msg:
           - "With specified variables, following configuration has been made:"
           - ""
-          - "URL used for Nginx virtual host: {{ domain }}"
+          - "URL used for Nginx virtual host: {{ wp_domain }}"
           - "WordPress Docker image version:{{ wp_version }}-php7.0-fpm"
           - "WORDPRESS_DB_NAME: {{ wp_db_name }}"
           - "WORDPRESS_TABLE_PREFIX: {{ wp_db_tb_pre }}"
