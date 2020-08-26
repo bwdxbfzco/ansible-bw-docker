@@ -7,7 +7,7 @@
    pre_tasks:
     - name: update resolve.conf
       template:
-        src: files/resolv.conf.j2
+        src: templates/resolv.conf.j2
         dest: /etc/resolv.conf
         owner: root
         group: root
