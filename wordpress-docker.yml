@@ -92,6 +92,6 @@
           - "Setup successfully complete."
           - ""
           - "Wordpress instance is available on following IP: {{ ip_address }}"
-          - "If DNS is pointing to this IP, it'll be available on: {{ domain }}"
+          - "If DNS is pointing to this IP, it'll be available on: {{ wp_domain }}"
       tags:
         - result
