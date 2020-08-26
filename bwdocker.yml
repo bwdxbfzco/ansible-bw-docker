@@ -17,7 +17,9 @@
     - apt:
         update_cache: yes
       become: true
-      when: ansible_os_family == "Debian"        
+      when: ansible_os_family == "Debian"
       
    roles: 
-    - geerlingguy.docker
+    - name: geerlingguy.docker
+      become: yes
+    
