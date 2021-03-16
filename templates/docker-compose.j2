@@ -21,7 +21,7 @@ mysql:
     restart: always
 
 wordpress:
-    image: wordpress:{{ wp_version }}-php7.2-fpm
+    image: wordpress
     ports:
       - '9000:9000'
     volumes:
@@ -34,3 +34,16 @@ wordpress:
     links:
       - mysql
     restart: always
+    
+backup:
+  image: databack/mysql-backup
+  restart: always
+  volumes:
+   - /home/z-mysql:/db
+  env:
+   - DB_DUMP_TARGET=/db
+   - DB_USER=root
+   - DB_PASS={{ wp_db_psw }}
+   - DB_DUMP_FREQ=1440
+   - DB_DUMP_BEGIN=2330
+   - DB_SERVER=mysql    
