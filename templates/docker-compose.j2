@@ -40,7 +40,7 @@ backup:
   restart: always
   volumes:
    - /home/z-mysql:/db
-  env:
+  environment:
    - DB_DUMP_TARGET=/db
    - DB_USER=root
    - DB_PASS={{ wp_db_psw }}
