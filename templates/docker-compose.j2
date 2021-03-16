@@ -10,7 +10,7 @@ nginx:
         - wordpress
     restart: always
 
-mysql:
+db:
     image: mariadb
     ports:
       - '3306:3306'
@@ -29,7 +29,7 @@ wordpress:
     environment:
       - WORDPRESS_DB_NAME={{ wp_db_name }}
       - WORDPRESS_TABLE_PREFIX={{ wp_db_tb_pre }}
-      - WORDPRESS_DB_HOST={{ wp_db_host }}
+      - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_PASSWORD={{ wp_db_psw }}
     links:
       - mysql
