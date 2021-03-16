@@ -21,7 +21,7 @@ mysql:
     restart: always
 
 wordpress:
-    image: wordpress
+    image: wordpress:{{ wp_version }}-{{wp_php}}-fpm
     ports:
       - '9000:9000'
     volumes:
