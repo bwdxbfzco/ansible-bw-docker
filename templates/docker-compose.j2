@@ -18,10 +18,13 @@ db:
       - ./wp-db-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD={{ wp_db_psw }}
+      - MYSQL_DATABASE={{ wp_db_name }}
+      - MYSQL_USER=wp_user
+      - MYSQL_PASSWORD={{ wp_db_psw }}
     restart: always
 
 wordpress:
-    image: wordpress:{{ wp_version }}-fpm-alpine
+    image: wordpress:{{ wp_version }}-php{{ wp_php }}-fpm
     ports:
       - '9000:9000'
     volumes:
@@ -30,7 +33,9 @@ wordpress:
       - WORDPRESS_DB_NAME={{ wp_db_name }}
       - WORDPRESS_TABLE_PREFIX={{ wp_db_tb_pre }}
       - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_HOST=wp_user
       - WORDPRESS_DB_PASSWORD={{ wp_db_psw }}
+      - WORDPRESS_DEBUG={{ wp_debug }}
     links:
       - db
     restart: always
