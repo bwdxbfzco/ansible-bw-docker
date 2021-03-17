@@ -76,13 +76,13 @@
         seconds: 10
 
     - name: install MySQL client on the host
-      apt: pkg={{item}} state=installed
+      apt: pkg={{item}} state=present
       with_items:
         - mysql-client 
       when: ansible_os_family == 'Debian'
       
     - name: install MySQL client on the host
-      apt: pkg={{item}} state=installed
+      apt: pkg={{item}} state=present
       with_items:
         - mysql-client 
       when: ansible_os_family == 'RedHat'      
