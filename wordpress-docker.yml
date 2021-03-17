@@ -91,19 +91,16 @@
     - debug:
         msg:
           - "With specified variables, following configuration has been made:"
-          - ""
           - "URL used for Nginx virtual host: {{ wp_domain }}"
-          - "WordPress Docker image version:{{ wp_version }}-php7.0-fpm"
           - "WORDPRESS_DB_NAME: {{ wp_db_name }}"
           - "WORDPRESS_TABLE_PREFIX: {{ wp_db_tb_pre }}"
           - "WORDPRESS_DB_HOST: {{ wp_db_host }}"
           - "WORDPRESS_DB_PASSWORD: {{ wp_db_psw }}"
-          - "MYSQL_ROOT_PASSWORD: {{ wp_db_psw }}"
+          - "MYSQL_USER: wp_user"
 
     - debug:
         msg:
-          - "Setup successfully complete."
-          - ""
+          - "Setup successfully completed."
           - "Wordpress instance is available on following IP: {{ ansible_host }}"
           - "If DNS is pointing to this IP, it'll be available on: {{ wp_domain }}"
       tags:
