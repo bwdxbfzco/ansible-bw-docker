@@ -33,7 +33,7 @@ wordpress:
       - WORDPRESS_DB_NAME={{ wp_db_name }}
       - WORDPRESS_TABLE_PREFIX={{ wp_db_tb_pre }}
       - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_HOST=wp_user
+      - WORDPRESS_DB_USER=wp_user
       - WORDPRESS_DB_PASSWORD={{ wp_db_psw }}
       - WORDPRESS_DEBUG={{ wp_debug }}
     links:
