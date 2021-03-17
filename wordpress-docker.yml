@@ -31,6 +31,7 @@
       - wp-db-data
       - nginx
       - logs/nginx
+      - z-mysql
       tags:
         - dir_ops
 
@@ -74,6 +75,18 @@
       pause:
         seconds: 10
 
+    - name: install mysql client on the host
+      apt: pkg={{item}} state=installed
+      with_items:
+        - mysql-client 
+      when: ansible_os_family == 'Debian'
+      
+    - name: install mysql client on the host
+      apt: pkg={{item}} state=installed
+      with_items:
+        - mysql-client 
+      when: ansible_os_family == 'RedHat'      
+      
     # debug output
     - debug:
         msg:
@@ -91,7 +104,7 @@
         msg:
           - "Setup successfully complete."
           - ""
-          - "Wordpress instance is available on following IP: {{ ip_address }}"
+          - "Wordpress instance is available on following IP: {{ ansible_host }}"
           - "If DNS is pointing to this IP, it'll be available on: {{ wp_domain }}"
       tags:
         - result
