@@ -21,7 +21,7 @@ db:
     restart: always
 
 wordpress:
-    image: wordpress:{{ wp_version }}-{{wp_php}}-fpm
+    image: wordpress:{{ wp_version }}-fpm-alpine
     ports:
       - '9000:9000'
     volumes:
@@ -32,7 +32,7 @@ wordpress:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_PASSWORD={{ wp_db_psw }}
     links:
-      - mysql
+      - db
     restart: always
     
 backup:
