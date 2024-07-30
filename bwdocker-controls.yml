@@ -6,6 +6,6 @@
   tasks:
     - name: Restart docker container
       command: docker restart '{{ container_name }}'
-      when: docker_container is defined
+      when: container_name is defined
 
 
