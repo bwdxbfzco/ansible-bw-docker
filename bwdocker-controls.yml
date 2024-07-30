@@ -5,7 +5,7 @@
   become: true
   tasks:
     - name: Restart docker container
-      docker_container:
-          name: '{{ container_name }}'
-          state: restarted
+      command: docker restart '{{ container_name }}'
+      when: docker_container is defined
+
 
