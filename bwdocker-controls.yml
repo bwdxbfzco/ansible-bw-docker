@@ -6,6 +6,18 @@
   tasks:
     - name: Restart docker container
       command: docker restart '{{ container_name }}'
-      when: container_name is defined
+      when: (bw_cmd is defined)  and (bw_cmd == "restart") and container_name is defined
+
+    - name: Stop docker container
+      command: docker stop '{{ container_name }}'
+      when: (bw_cmd is defined)  and (bw_cmd == "stop") and container_name is defined
+
+    - name: Start docker container
+      command: docker start '{{ container_name }}'
+      when: (bw_cmd is defined)  and (bw_cmd == "start") and container_name is defined
+
+    - name: install npm package in the docker container
+      command: docker exec '{{ container_name }}' npm install '{{ npm_package }}'
+      when: (bw_cmd is defined)  and (bw_cmd == "npm_install") and container_name is defined and npm_package is defined
 
 
