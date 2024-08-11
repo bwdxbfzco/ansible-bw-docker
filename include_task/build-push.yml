@@ -1,5 +1,7 @@
 ---
 
 - name: Test
+  hosts: 'docker_server'
   debug:
      msg: "Hello World"
+
