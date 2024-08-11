@@ -24,7 +24,7 @@
 
     - name: Build container for live and push to docker hub
       include_tasks: include_task/build-push.yml
-      when: (bw_cmd is defined)  and (bw_cmd == "build")
+      when: (bw_cmd is defined)  and ((bw_cmd == "build")  or (bw_cmd == "push") or (bw_cmd == "build_push"))
 
     - name: Deploy container on the swarm
       include_tasks: include_task/deploy-swarm.yml
