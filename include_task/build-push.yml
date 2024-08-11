@@ -3,11 +3,6 @@
 - name: Build the docker image
   hosts: 'docker_server'
   tasks:
-    - name: Build docker image
-      command: docker build -t '{{ docker_hub_username }}/{{ docker_hub_repo }}:{{ docker_hub_tag }}' '{{ dockerfile_path }}'
-      when: (bw_cmd is defined)  and ((bw_cmd == "build") or (bw_cmd == "build_push")) and docker_hub_username is defined and docker_hub_repo is defined and docker_hub_tag is defined and dockerfile_path is defined
-
-    - name: Push to docker registry
-      command: docker push '{{ docker_hub_username }}/{{ docker_hub_repo }}:{{ docker_hub_tag }}'
-      when: (bw_cmd is defined)  and ((bw_cmd == "push") or (bw_cmd == "build_push")) and docker_hub_username is defined and docker_hub_repo is defined and docker_hub_tag is defined
-
+    - name: Test
+      debug:
+          msg: "Hello World"
