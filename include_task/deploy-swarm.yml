@@ -5,6 +5,5 @@
   when: (bw_cmd is defined)  and (bw_cmd == "deploy") and docker_compose_file is defined and stack_name is defined and inventory_hostname in groups['swarm_manager']
 
 - name: Check the status of the docker stack
-  hosts: 'swarm_manager'
   command: docker stack ps '{{ stack_name }}'
   when: (bw_cmd is defined)  and (bw_cmd == "status") and stack_name is defined and inventory_hostname in groups['swarm_manager']
