@@ -20,4 +20,10 @@
       command: docker exec '{{ container_name }}' npm install '{{ npm_package }}'
       when: (bw_cmd is defined)  and (bw_cmd == "npm_install") and container_name is defined and npm_package is defined
 
+    - name: Build container for live and push to docker hub
+      include_tasks: include_task/build-push.yml
+      when: (bw_cmd is defined)  and (bw_cmd == "build")
 
+    - name: Deploy container on the swarm
+      include_tasks: include_task/deploy-swarm.yml
+      when: (bw_cmd is defined)  and (bw_cmd == "deploy")

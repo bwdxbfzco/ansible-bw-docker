@@ -1,0 +1,14 @@
+---
+#deploy on the swarm
+- name: Deploy on the swarm
+  hosts: 'swarm_manager'
+  become: true
+  vars: vars/docker-vars.yml
+  tasks:
+    - name: Deploy the docker image on the docker swarm
+      command: docker stack deploy -c '{{ docker_compose_file }}' '{{ stack_name }}'
+      when: (bw_cmd is defined)  and (bw_cmd == "deploy") and docker_compose_file is defined and stack_name is defined
+
+    - name: Check the status of the docker stack
+      command: docker stack ps '{{ stack_name }}'
+      when: (bw_cmd is defined)  and (bw_cmd == "status") and stack_name is defined
