@@ -1,7 +1,7 @@
 ---
 
 - name: Build docker image
-  command: docker build -t '{{ docker_hub_username }}/{{ docker_hub_repo }}:{{ docker_hub_tag }}' '{{ dockerfile_path }}'
+  command: docker build -t '{{ docker_hub_username }}/{{ docker_hub_repo }}:{{ docker_hub_tag }}' '{{ docker_path }}{{ dockerfile_path }}'
   when: (bw_cmd is defined)  and ((bw_cmd == "build") or (bw_cmd == "build_push")) and docker_hub_username is defined and docker_hub_repo is defined and docker_hub_tag is defined and dockerfile_path is defined and inventory_hostname in groups['docker_server']
 
 - name: Push to docker registry
