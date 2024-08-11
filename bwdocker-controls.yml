@@ -3,7 +3,8 @@
 - name: Control docker containers
   hosts: '{{ ip_address | default("all") }}'
   become: true
-  include_vars: vars/docker-vars.yml
+  vars_files:
+    - vars/docker-vars.yml
   tasks:
     - name: Restart docker container
       command: docker restart '{{ container_name }}'
