@@ -1,7 +1,6 @@
 ---
 
-- name: Build the docker image
-  hosts: 'docker_server'
+- name: Test
   tasks:
     - name: Test
       debug:
