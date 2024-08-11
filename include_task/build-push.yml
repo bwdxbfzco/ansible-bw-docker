@@ -1,7 +1,7 @@
 ---
 
 - name: Test
-  hosts: 'docker_server'
   debug:
      msg: "Hello World"
+  when: inventory_hostname in groups['docker_server']
 
