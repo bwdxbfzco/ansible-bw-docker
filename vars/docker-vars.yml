@@ -1,2 +1,3 @@
 docker_hub_username: "buzinessware"
 docker_path: "/code/"
+docker_composer_path: "/etc/docker/stack/live/"
