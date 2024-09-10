@@ -1,7 +1,7 @@
 ---
 
 - name: Deploy the docker image on the docker swarm
-  command: docker stack deploy -c '{{ docker_composer_path }}{{ docker_compose_file }}' '{{ stack_name }}'
+  command: docker stack deploy -c '{{ docker_composer_path }}{{ docker_compose_file }}' '{{ stack_name }}' --with-registry-auth
   when: (bw_cmd is defined)  and (bw_cmd == "deploy") and docker_compose_file is defined and stack_name is defined and inventory_hostname in groups['swarm_manager']
 
 - name: Check the status of the docker stack
